@@ -233,49 +233,12 @@ export class NFTAgent extends zkCloudWorker {
 
     if (WALLET === undefined) throw new Error("WALLET is undefined");
 
-    // const contractAddress = PublicKey.fromBase58(args.tokenAddress);
-    // console.log("Contract", contractAddress.toBase58());
-    // const adminContractAddress = PublicKey.fromBase58(
-    //   args.adminContractAddress
-    // );
-    // console.log("Admin Contract", adminContractAddress.toBase58());
-    // const developerAddress = args.developerAddress
-    //   ? PublicKey.fromBase58(args.developerAddress)
-    //   : undefined;
-    // const developerFee = args.developerFee
-    //   ? UInt64.from(args.developerFee)
-    //   : undefined;
-
     console.time("prepared tx");
-    // const signedJson = JSON.parse(args.signedData);
 
     const { fee, sender, nonce, memo } = transactionParams(args);
     console.log("Admin (sender)", sender.toBase58());
     if (sender.toBase58() != args.sender) throw new Error("Invalid sender");
 
-    // const {
-    //   tx: txNew,
-    //   isAdvanced,
-    //   verificationKeyHashes,
-    // } = await buildTokenDeployTransaction({
-    //   adminType: args.adminType,
-    //   chain: this.cloud.chain,
-    //   fee,
-    //   sender,
-    //   nonce,
-    //   memo,
-    //   tokenAddress: contractAddress,
-    //   adminContractAddress,
-    //   adminAddress: sender,
-    //   uri: args.uri,
-    //   symbol: args.symbol,
-    //   whitelist: args.whitelist,
-    //   decimals: UInt8.from(9),
-    //   provingKey: PublicKey.fromBase58(WALLET),
-    //   provingFee: UInt64.from(LAUNCH_FEE),
-    //   developerAddress,
-    //   developerFee,
-    // });
     const {
       tx: txNew,
       adminType,
@@ -484,7 +447,7 @@ export class NFTAgent extends zkCloudWorker {
           `${memo} tx NOT sent: hash: ${txSent?.hash} status: ${txSent?.status}`,
           txSent.errors
         );
-        // TODO: handle right API handling on tx-result
+
         this.cloud.publishTransactionMetadata({
           txId: txSent?.hash,
           metadata: {
