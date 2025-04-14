@@ -103,7 +103,7 @@ export class NFTAgent extends zkCloudWorker {
                 hash
               )
                 throw new Error(
-                  `Verification key for ${key} ${adminType} (${hash}) does not match`
+                  `Expected verification key for ${key} ${adminType} (${hash}) does not match actual AdvancedCollection hash ${NFTAgent.verificationKeys.AdvancedCollection?.hash.toJSON()}`
                 );
             } else {
               if (!NFTAgent.verificationKeys.Collection) {
@@ -117,7 +117,7 @@ export class NFTAgent extends zkCloudWorker {
               }
               if (NFTAgent.verificationKeys.Collection?.hash.toJSON() !== hash)
                 throw new Error(
-                  `Verification key for ${key} ${adminType} (${hash}) does not match`
+                  `Expected verification key for ${key} ${adminType} (${hash}) does not match actual Collection hash ${NFTAgent.verificationKeys.Collection?.hash.toJSON()}`
                 );
             }
             break;
@@ -139,7 +139,9 @@ export class NFTAgent extends zkCloudWorker {
             }
             if (NFTAgent.verificationKeys[key].hash.toJSON() !== hash)
               throw new Error(
-                `Verification key for ${key} (${hash}) does not match`
+                `Expected verification key for ${key} (${hash}) does not match actual hash ${NFTAgent.verificationKeys[
+                  key
+                ].hash.toJSON()}`
               );
             break;
 

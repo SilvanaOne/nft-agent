@@ -1,6 +1,6 @@
 {
   "name": "nft-agent",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": "DFST",
   "type": "module",
   "license": "Apache-2.0",
@@ -8,7 +8,8 @@
     "test": "NODE_NO_WARNINGS=1 node --loader=ts-node/esm --enable-source-maps -r dotenv/config --require dotenv/config --env-file=.env --test",
     "local:agent": "CHAIN=local CLOUD=local DEPLOY=true MINT=true TRANSFER=true SELL=true BUY=true yarn test test/agent.test.ts",
     "devnet:agent": "CHAIN=devnet DEPLOY=true MINT=true TRANSFER=true SELL=true BUY=true yarn test test/agent.test.ts",
-    "coverage": "rm -rf coverage && c8 yarn local:agent"
+    "coverage": "rm -rf coverage && c8 yarn local:agent",
+    "update": "ncu -i -u --root -ws"
   },
   "node": {
     "version": ">=20.0.0"
@@ -20,18 +21,18 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
-  "packageManager": "yarn@4.7.0",
+  "packageManager": "yarn@4.9.1",
   "dependencies": {
-    "@silvana-one/abi": "^1.0.0",
-    "@silvana-one/api": "^1.0.0",
-    "@silvana-one/mina-prover": "^1.0.0",
-    "@silvana-one/mina-utils": "^1.0.0",
-    "@silvana-one/nft": "^1.0.0",
-    "@silvana-one/prover": "^1.0.0",
-    "@silvana-one/storage": "^1.0.0",
-    "@silvana-one/token": "^1.0.0",
-    "@silvana-one/upgradable": "^1.0.0",
-    "o1js": "2.3.0",
+    "@silvana-one/abi": "^1.0.1",
+    "@silvana-one/api": "^1.0.1",
+    "@silvana-one/mina-prover": "^1.0.1",
+    "@silvana-one/mina-utils": "^1.0.1",
+    "@silvana-one/nft": "^1.0.1",
+    "@silvana-one/prover": "^1.0.1",
+    "@silvana-one/storage": "^1.0.1",
+    "@silvana-one/token": "^1.0.1",
+    "@silvana-one/upgradable": "^1.0.1",
+    "o1js": "^2.4.0",
     "unique-names-generator": "^4.7.1"
   },
   "c8": {
