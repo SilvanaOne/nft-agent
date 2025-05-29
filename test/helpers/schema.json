@@ -1,0 +1,3812 @@
+{
+  "__schema": {
+    "__typename": "__Schema",
+    "types": [
+      {
+        "__typename": "__Type",
+        "name": "JSON",
+        "kind": "SCALAR",
+        "description": "The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).",
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "DateTime",
+        "kind": "SCALAR",
+        "description": "A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.",
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "String",
+        "kind": "SCALAR",
+        "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "Pagination",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "total",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Int",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "page",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Int",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "pageSize",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Int",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "pageCount",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Int",
+                "kind": "SCALAR"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "Int",
+        "kind": "SCALAR",
+        "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "DeleteMutationResponse",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "ID",
+        "kind": "SCALAR",
+        "description": "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID.",
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "PublicationStatus",
+        "kind": "ENUM",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "IDFilterInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "Boolean",
+        "kind": "SCALAR",
+        "description": "The `Boolean` scalar type represents `true` or `false`.",
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "BooleanFilterInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "StringFilterInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "IntFilterInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "FloatFilterInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "Float",
+        "kind": "SCALAR",
+        "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).",
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "DateTimeFilterInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "JSONFilterInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "CollectionFiltersInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "CollectionInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "Collection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "description",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "symbol",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "permissions",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "JSON",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "creator",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "traits_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "TraitRelationResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "traits",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "image",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UploadFile",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "banner",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UploadFile",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "nfts_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "NftRelationResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "nfts",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "publishedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "CollectionEntityResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "pageInfo",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Pagination",
+                "kind": "OBJECT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "CollectionRelationResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "NftFiltersInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "NftInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "Nft",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "description",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "permissions",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "JSON",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "traits_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "TraitRelationResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "traits",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "owner",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "image",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UploadFile",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "collection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Collection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "publishedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "NftEntityResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "pageInfo",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Pagination",
+                "kind": "OBJECT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "NftRelationResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "TraitFiltersInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "TraitInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "Trait",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "key",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "value",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "private",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "nfts_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "NftRelationResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "nfts",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "collections_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "CollectionRelationResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "collections",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "publishedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "TraitEntityResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "pageInfo",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Pagination",
+                "kind": "OBJECT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "TraitRelationResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UploadFileFiltersInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "UploadFile",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "alternativeText",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "caption",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "width",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Int",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "height",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Int",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "formats",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "JSON",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "hash",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "ext",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "mime",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "size",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Float",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "url",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "previewUrl",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "provider",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "provider_metadata",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "JSON",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "related",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "LIST",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "GenericMorph",
+                "kind": "UNION"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "publishedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UploadFileEntityResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "pageInfo",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Pagination",
+                "kind": "OBJECT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "I18NLocaleFiltersInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "I18NLocale",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "code",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "publishedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "I18NLocaleEntityResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "pageInfo",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Pagination",
+                "kind": "OBJECT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "ReviewWorkflowsWorkflowFiltersInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "ReviewWorkflowsWorkflowInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "ReviewWorkflowsWorkflow",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "stages_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "ReviewWorkflowsWorkflowStageRelationResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "stages",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "stageRequiredToPublish",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "ReviewWorkflowsWorkflowStage",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "contentTypes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "JSON",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "publishedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "ReviewWorkflowsWorkflowEntityResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "pageInfo",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Pagination",
+                "kind": "OBJECT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "ReviewWorkflowsWorkflowStageFiltersInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "ReviewWorkflowsWorkflowStageInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "ReviewWorkflowsWorkflowStage",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "color",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "workflow",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "ReviewWorkflowsWorkflow",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "publishedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "ReviewWorkflowsWorkflowStageEntityResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "pageInfo",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Pagination",
+                "kind": "OBJECT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "ReviewWorkflowsWorkflowStageRelationResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsPermissionFiltersInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsPermission",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "action",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "role",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsRole",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "publishedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsPermissionRelationResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsRoleFiltersInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsRoleInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsRole",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "description",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "type",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "permissions_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsPermissionRelationResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "permissions",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "users_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsUserRelationResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "users",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "publishedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsRoleEntityResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "pageInfo",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Pagination",
+                "kind": "OBJECT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsUserFiltersInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsUserInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsUser",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "username",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "email",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "provider",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "confirmed",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Boolean",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "blocked",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Boolean",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "role",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsRole",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createdAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updatedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "publishedAt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DateTime",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsUserEntityResponse",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "data",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsUser",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsUserEntityResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "pageInfo",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Pagination",
+                "kind": "OBJECT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsUserRelationResponseCollection",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "nodes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "GenericMorph",
+        "kind": "UNION",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "FileInfoInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsMe",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "id",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "documentId",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "username",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "email",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "confirmed",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Boolean",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "blocked",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Boolean",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "role",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsMeRole",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsMeRole",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "id",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "ID",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "description",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "type",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsRegisterInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsLoginInput",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsPasswordPayload",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "ok",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsLoginPayload",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "jwt",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "user",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "UsersPermissionsMe",
+                "kind": "OBJECT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsCreateRolePayload",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "ok",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsUpdateRolePayload",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "ok",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "UsersPermissionsDeleteRolePayload",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "ok",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "PaginationArg",
+        "kind": "INPUT_OBJECT",
+        "description": null,
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "Query",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "collection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Collection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "collections_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "CollectionEntityResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "collections",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "nft",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Nft",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "nfts_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "NftEntityResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "nfts",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "trait",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Trait",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "traits_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "TraitEntityResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "traits",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "uploadFile",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UploadFile",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "uploadFiles_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UploadFileEntityResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "uploadFiles",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "i18NLocale",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "I18NLocale",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "i18NLocales_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "I18NLocaleEntityResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "i18NLocales",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "reviewWorkflowsWorkflow",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "ReviewWorkflowsWorkflow",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "reviewWorkflowsWorkflows_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "ReviewWorkflowsWorkflowEntityResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "reviewWorkflowsWorkflows",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "reviewWorkflowsWorkflowStage",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "ReviewWorkflowsWorkflowStage",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "reviewWorkflowsWorkflowStages_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "ReviewWorkflowsWorkflowStageEntityResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "reviewWorkflowsWorkflowStages",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "usersPermissionsRole",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsRole",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "usersPermissionsRoles_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsRoleEntityResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "usersPermissionsRoles",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "usersPermissionsUser",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsUser",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "usersPermissionsUsers_connection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsUserEntityResponseCollection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "usersPermissionsUsers",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "me",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsMe",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "Mutation",
+        "kind": "OBJECT",
+        "description": null,
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "createCollection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Collection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updateCollection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Collection",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "deleteCollection",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DeleteMutationResponse",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createNft",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Nft",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updateNft",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Nft",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "deleteNft",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DeleteMutationResponse",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createTrait",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Trait",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updateTrait",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Trait",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "deleteTrait",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DeleteMutationResponse",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createReviewWorkflowsWorkflow",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "ReviewWorkflowsWorkflow",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updateReviewWorkflowsWorkflow",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "ReviewWorkflowsWorkflow",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "deleteReviewWorkflowsWorkflow",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DeleteMutationResponse",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createReviewWorkflowsWorkflowStage",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "ReviewWorkflowsWorkflowStage",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updateReviewWorkflowsWorkflowStage",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "ReviewWorkflowsWorkflowStage",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "deleteReviewWorkflowsWorkflowStage",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "DeleteMutationResponse",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updateUploadFile",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "UploadFile",
+                "kind": "OBJECT"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "deleteUploadFile",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "UploadFile",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createUsersPermissionsRole",
+            "description": "Create a new role",
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsCreateRolePayload",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updateUsersPermissionsRole",
+            "description": "Update an existing role",
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsUpdateRolePayload",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "deleteUsersPermissionsRole",
+            "description": "Delete an existing role",
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsDeleteRolePayload",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "createUsersPermissionsUser",
+            "description": "Create a new user",
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "UsersPermissionsUserEntityResponse",
+                "kind": "OBJECT"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "updateUsersPermissionsUser",
+            "description": "Update an existing user",
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "UsersPermissionsUserEntityResponse",
+                "kind": "OBJECT"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "deleteUsersPermissionsUser",
+            "description": "Delete an existing user",
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "UsersPermissionsUserEntityResponse",
+                "kind": "OBJECT"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "login",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "UsersPermissionsLoginPayload",
+                "kind": "OBJECT"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "register",
+            "description": "Register a user",
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "UsersPermissionsLoginPayload",
+                "kind": "OBJECT"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "forgotPassword",
+            "description": "Request a reset password token",
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsPasswordPayload",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "resetPassword",
+            "description": "Reset user password. Confirm with a code (resetToken from forgotPassword)",
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsLoginPayload",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "changePassword",
+            "description": "Change user password. Confirm with the current password.",
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsLoginPayload",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "emailConfirmation",
+            "description": "Confirm an email users email address",
+            "type": {
+              "__typename": "__Type",
+              "name": "UsersPermissionsLoginPayload",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "__Schema",
+        "kind": "OBJECT",
+        "description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "description",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "types",
+            "description": "A list of all types supported by this server.",
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "queryType",
+            "description": "The type that query operations will be rooted at.",
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "__Type",
+                "kind": "OBJECT"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "mutationType",
+            "description": "If this server supports mutation, the type that mutation operations will be rooted at.",
+            "type": {
+              "__typename": "__Type",
+              "name": "__Type",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "subscriptionType",
+            "description": "If this server support subscription, the type that subscription operations will be rooted at.",
+            "type": {
+              "__typename": "__Type",
+              "name": "__Type",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "directives",
+            "description": "A list of all directives supported by this server.",
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "__Type",
+        "kind": "OBJECT",
+        "description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByURL`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "kind",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "__TypeKind",
+                "kind": "ENUM"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "description",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "specifiedByURL",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "fields",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "LIST",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "NON_NULL"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "interfaces",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "LIST",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "NON_NULL"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "possibleTypes",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "LIST",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "NON_NULL"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "enumValues",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "LIST",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "NON_NULL"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "inputFields",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "LIST",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "NON_NULL"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "ofType",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "__Type",
+              "kind": "OBJECT",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "isOneOf",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "Boolean",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "__TypeKind",
+        "kind": "ENUM",
+        "description": "An enum describing what kind of type a given `__Type` is.",
+        "fields": null
+      },
+      {
+        "__typename": "__Type",
+        "name": "__Field",
+        "kind": "OBJECT",
+        "description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "description",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "args",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "type",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "__Type",
+                "kind": "OBJECT"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "isDeprecated",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "deprecationReason",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "__InputValue",
+        "kind": "OBJECT",
+        "description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "description",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "type",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "__Type",
+                "kind": "OBJECT"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "defaultValue",
+            "description": "A GraphQL-formatted string representing the default value for this input value.",
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "isDeprecated",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "deprecationReason",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "__EnumValue",
+        "kind": "OBJECT",
+        "description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "description",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "isDeprecated",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "deprecationReason",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "__Directive",
+        "kind": "OBJECT",
+        "description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
+        "fields": [
+          {
+            "__typename": "__Field",
+            "name": "name",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "String",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "description",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": "String",
+              "kind": "SCALAR",
+              "ofType": null
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "isRepeatable",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": "Boolean",
+                "kind": "SCALAR"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "locations",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          },
+          {
+            "__typename": "__Field",
+            "name": "args",
+            "description": null,
+            "type": {
+              "__typename": "__Type",
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "__typename": "__Type",
+                "name": null,
+                "kind": "LIST"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "__typename": "__Type",
+        "name": "__DirectiveLocation",
+        "kind": "ENUM",
+        "description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
+        "fields": null
+      }
+    ]
+  }
+}

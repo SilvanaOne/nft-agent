@@ -851,7 +851,11 @@ export class NFTAgent extends zkCloudWorker {
         )
       )
     );
-    if (tx.status === "pending") {
+    if (
+      tx.status === "pending" &&
+      this.cloud.chain !== "local" &&
+      this.cloud.chain !== "zeko"
+    ) {
       const nftTransaction: NFTtransaction = {
         hash: tx.hash,
         chain: this.cloud.chain,
