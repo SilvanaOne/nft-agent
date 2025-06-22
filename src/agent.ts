@@ -522,7 +522,11 @@ export class NFTAgent extends zkCloudWorker {
       }
     }
 
-    if (this.cloud.isLocalCloud && txSent?.status === "pending") {
+    if (
+      this.cloud.isLocalCloud &&
+      txSent?.status === "pending" &&
+      this.cloud.chain !== "zeko"
+    ) {
       const txIncluded = await txSent.safeWait();
       console.log(
         `${memo} tx included into block: hash: ${txIncluded.hash} status: ${txIncluded.status}`
