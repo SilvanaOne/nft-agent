@@ -75,6 +75,8 @@ const {
 } = args;
 
 const DELAY = chain === "local" ? 1000 : chain === "zeko" ? 3000 : 10000;
+if (chain === "zeko:alphanet")
+  throw new Error("zeko:alphanet is not supported");
 
 const api = new NftAPI({
   jwt: useLocalCloudWorker ? "local" : JWT,
