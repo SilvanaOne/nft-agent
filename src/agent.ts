@@ -596,7 +596,7 @@ export class NFTAgent extends zkCloudWorker {
       success,
 
       tx: txJSON,
-      hash: txSent?.hash,
+      hash: success || this.cloud.chain !== "zeko" ? txSent?.hash : undefined,
       status: txSent?.status,
       error: String(txSent?.errors ?? ""),
     });
