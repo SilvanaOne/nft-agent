@@ -74,9 +74,15 @@ const {
   useAdvancedAdmin,
 } = args;
 
+if (
+  chain !== "local" &&
+  chain !== "devnet" &&
+  chain !== "lightnet" &&
+  chain !== "zeko"
+)
+  throw new Error("Invalid chain");
+
 const DELAY = chain === "local" ? 1000 : chain === "zeko" ? 3000 : 10000;
-if (chain === "zeko:alphanet")
-  throw new Error("zeko:alphanet is not supported");
 
 const api = new NftAPI({
   jwt: useLocalCloudWorker ? "local" : JWT,
