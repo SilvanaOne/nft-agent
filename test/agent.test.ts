@@ -75,14 +75,15 @@ const {
 } = args;
 
 if (
-  chain !== "local" &&
-  chain !== "devnet" &&
-  chain !== "lightnet" &&
-  chain !== "zeko"
+  chain !== "mina:local" &&
+  chain !== "mina:devnet" &&
+  chain !== "mina:lightnet" &&
+  chain !== "zeko:testnet"
 )
   throw new Error("Invalid chain");
 
-const DELAY = chain === "local" ? 1000 : chain === "zeko" ? 3000 : 10000;
+const DELAY =
+  chain === "mina:local" ? 1000 : chain === "zeko:testnet" ? 3000 : 10000;
 
 const api = new NftAPI({
   jwt: useLocalCloudWorker ? "local" : JWT,
@@ -122,12 +123,12 @@ describe("NFT Agent", async () => {
   it(`should initialize blockchain`, async () => {
     Memory.info("initializing blockchain");
 
-    if (chain === "local" || chain === "lightnet") {
+    if (chain === "mina:local" || chain === "mina:lightnet") {
       console.log("local chain:", chain);
-      keys = (await initBlockchain(chain, 10)).keys;
+      keys = (await initBlockchain({ chain, deployersNumber: 10 })).keys;
     } else {
       console.log("non-local chain:", chain);
-      await initBlockchain(chain);
+      await initBlockchain({ chain });
       keys = TEST_ACCOUNTS.map((account) =>
         TestPublicKey.fromBase58(account.privateKey)
       );
@@ -307,7 +308,7 @@ describe("NFT Agent", async () => {
       console.timeEnd("deployed");
       const txStatus2 = await getTxStatusFast({ hash });
       console.log("txStatus deploy post", txStatus2);
-      if (chain !== "local") await sleep(DELAY);
+      if (chain !== "mina:local") await sleep(DELAY);
       await printBalances();
     });
   }
@@ -399,7 +400,7 @@ describe("NFT Agent", async () => {
       }
       Memory.info("minted");
       console.timeEnd("minted");
-      if (chain !== "local") await sleep(DELAY);
+      if (chain !== "mina:local") await sleep(DELAY);
       await printBalances();
       await fetchMinaAccount({
         publicKey: adminKey,
@@ -491,7 +492,7 @@ describe("NFT Agent", async () => {
       }
       Memory.info("transferred");
       console.timeEnd("transferred");
-      if (chain !== "local") await sleep(DELAY);
+      if (chain !== "mina:local") await sleep(DELAY);
       await printBalances();
     });
   }
@@ -573,7 +574,7 @@ describe("NFT Agent", async () => {
       }
       Memory.info("sold");
       console.timeEnd("sold");
-      if (chain !== "local") await sleep(DELAY);
+      if (chain !== "mina:local") await sleep(DELAY);
       await printBalances();
     });
   }
@@ -652,7 +653,7 @@ describe("NFT Agent", async () => {
       }
       Memory.info("bought");
       console.timeEnd("bought");
-      if (chain !== "local") await sleep(DELAY);
+      if (chain !== "mina:local") await sleep(DELAY);
       await printBalances();
     });
   }

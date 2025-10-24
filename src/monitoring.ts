@@ -3,12 +3,13 @@ import {
   config,
   getNftInfo,
   NftRequestAnswer,
+  CanonicalBlockchain,
 } from "@silvana-one/api";
 import { pinIfNeeded } from "./pin.js";
 
 export interface NFTtransaction {
   hash: string;
-  chain: string;
+  chain: "mina:devnet" | "mina:mainnet" | "zeko:testnet";
   collectionAddress: string;
   nftAddress?: string;
   jobId: string;
@@ -25,7 +26,7 @@ export async function updateNftInfo(
   try {
     config({
       apiKey: process.env.MINATOKENS_API_KEY!,
-      chain: tx.chain as "mainnet" | "devnet" | "zeko",
+      chain: tx.chain,
     });
     const info = (
       await getNftInfo({

@@ -4,8 +4,8 @@ import {
   sleep,
   TransactionMetadata,
   CloudTransaction,
-  blockchain,
 } from "@silvana-one/prover";
+
 import {
   transactionParams,
   parseTransactionPayloads,
@@ -23,6 +23,7 @@ import {
   NftSellTransactionParams,
   NftMintTransactionParams,
   NftApproveTransactionParams,
+  CanonicalBlockchain,
 } from "@silvana-one/api";
 import { Collection, AdvancedCollection } from "@silvana-one/nft";
 import {
@@ -70,7 +71,7 @@ export class NFTAgent extends zkCloudWorker {
       console.time("compiled");
       const vk =
         tokenVerificationKeys[
-          this.cloud.chain === "mainnet" ? "mainnet" : "devnet"
+          this.cloud.chain === "mina:mainnet" ? "mainnet" : "devnet"
         ].vk;
       for (const hash of verificationKeyHashes) {
         const [key, item] =
@@ -525,7 +526,7 @@ export class NFTAgent extends zkCloudWorker {
     if (
       this.cloud.isLocalCloud &&
       txSent?.status === "pending" &&
-      this.cloud.chain !== "zeko"
+      this.cloud.chain !== "zeko:testnet"
     ) {
       const txIncluded = await txSent.safeWait();
       console.log(
@@ -546,12 +547,8 @@ export class NFTAgent extends zkCloudWorker {
           settlement_txs: txSent?.hash
             ? [
                 {
-                  chain: this.cloud.chain === "zeko" ? "zeko" : "mina",
+                  chain: this.cloud.chain,
                   hash: txSent.hash,
-                  network:
-                    this.cloud.chain === "zeko"
-                      ? "devnet"
-                      : (this.cloud.chain as "mainnet" | "devnet"),
                 },
               ]
             : undefined,
@@ -560,7 +557,7 @@ export class NFTAgent extends zkCloudWorker {
                 {
                   storage: {
                     chain: "pinata",
-                    network: "public",
+                    network: this.cloud.chain,
                     hash: proofIpfsHash,
                   },
                 },
@@ -570,7 +567,7 @@ export class NFTAgent extends zkCloudWorker {
             ? [
                 {
                   chain: "pinata",
-                  network: "public",
+                  network: this.cloud.chain,
                   hash: ipfsHash,
                 },
               ]
@@ -596,7 +593,10 @@ export class NFTAgent extends zkCloudWorker {
       success,
 
       tx: txJSON,
-      hash: success || this.cloud.chain !== "zeko" ? txSent?.hash : undefined,
+      hash:
+        success || this.cloud.chain !== "zeko:testnet"
+          ? txSent?.hash
+          : undefined,
       status: txSent?.status,
       error: String(txSent?.errors ?? ""),
     });
@@ -742,7 +742,7 @@ export class NFTAgent extends zkCloudWorker {
 
   private async checkTransactions(transactions: CloudTransaction[]) {
     if (transactions.length === 0) return "no transactions to process";
-    await initBlockchain(this.cloud.chain as blockchain);
+    await initBlockchain({ chain: this.cloud.chain });
     for (const transaction of transactions) {
       try {
         const tx: NFTtransaction = JSON.parse(transaction.transaction);
@@ -770,12 +770,8 @@ export class NFTAgent extends zkCloudWorker {
                 jobMetadata: {
                   settlement_txs: [
                     {
-                      chain: tx.chain === "zeko" ? "zeko" : "mina",
+                      chain: tx.chain,
                       hash: tx.hash,
-                      network:
-                        tx.chain === "zeko"
-                          ? "devnet"
-                          : (tx.chain as "mainnet" | "devnet"),
                     },
                   ],
                 },
@@ -857,12 +853,15 @@ export class NFTAgent extends zkCloudWorker {
     );
     if (
       tx.status === "pending" &&
-      this.cloud.chain !== "local" &&
-      this.cloud.chain !== "zeko"
+      this.cloud.chain !== "mina:local" &&
+      this.cloud.chain !== "zeko:testnet"
     ) {
       const nftTransaction: NFTtransaction = {
         hash: tx.hash,
-        chain: this.cloud.chain,
+        chain: this.cloud.chain as
+          | "mina:devnet"
+          | "mina:mainnet"
+          | "zeko:testnet",
         collectionAddress,
         nftAddress,
         jobId,
