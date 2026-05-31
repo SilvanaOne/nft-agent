@@ -9,6 +9,7 @@
     "local:agent": "CHAIN=mina:local CLOUD=local DEPLOY=true MINT=true TRANSFER=true SELL=true BUY=true npm run test test/agent.test.ts",
     "local:cms": "CHAIN=local CLOUD=local DEPLOY=true MINT=true TRANSFER=true SELL=true BUY=true npm run test test/cms.test.ts",
     "devnet:agent": "CHAIN=mina:devnet DEPLOY=true MINT=true TRANSFER=true SELL=true BUY=true npm run test test/agent.test.ts",
+    "mesa:agent": "CHAIN=mina:testnet DEPLOY=true MINT=true TRANSFER=true SELL=true BUY=true npm run test test/agent.test.ts",
     "zeko:agent": "CHAIN=zeko CLOUD=local DEPLOY=true MINT=true TRANSFER=true SELL=true BUY=true npm run test test/agent.test.ts",
     "coverage": "rm -rf coverage && c8 npm run local:agent",
     "update": "ncu -i -u --root -ws"
