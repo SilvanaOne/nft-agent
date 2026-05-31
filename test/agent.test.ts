@@ -78,7 +78,8 @@ if (
   chain !== "mina:local" &&
   chain !== "mina:devnet" &&
   chain !== "mina:lightnet" &&
-  chain !== "zeko:testnet"
+  chain !== "zeko:testnet" &&
+  chain !== "mina:testnet"
 )
   throw new Error("Invalid chain");
 
@@ -130,7 +131,7 @@ describe("NFT Agent", async () => {
       console.log("non-local chain:", chain);
       await initBlockchain({ chain });
       keys = TEST_ACCOUNTS.map((account) =>
-        TestPublicKey.fromBase58(account.privateKey)
+        TestPublicKey.fromBase58(account.privateKey),
       );
     }
     assert(keys.length >= 8, "Invalid keys");
@@ -162,7 +163,7 @@ describe("NFT Agent", async () => {
           const senderUpdate = AccountUpdate.createSigned(topup);
           senderUpdate.balance.subInPlace(1000000000);
           senderUpdate.send({ to: wallet, amount: 1_000_000_000 });
-        }
+        },
       );
       topupTx.sign([topup.key]);
       await sendTx({ tx: topupTx, description: "topup" });
@@ -179,7 +180,7 @@ describe("NFT Agent", async () => {
           const senderUpdate = AccountUpdate.createSigned(topup);
           senderUpdate.balance.subInPlace(1000000000);
           senderUpdate.send({ to: user1, amount: 10_000_000_000 });
-        }
+        },
       );
       topupTx.sign([topup.key]);
       await sendTx({ tx: topupTx, description: "topup user1" });
@@ -196,7 +197,7 @@ describe("NFT Agent", async () => {
           const senderUpdate = AccountUpdate.createSigned(topup);
           senderUpdate.balance.subInPlace(1000000000);
           senderUpdate.send({ to: user2, amount: 10_000_000_000 });
-        }
+        },
       );
       topupTx.sign([topup.key]);
       await sendTx({ tx: topupTx, description: "topup user2" });
@@ -711,7 +712,7 @@ async function printBalances() {
               (tokenBalanceDiff / 1_000_000_000).toString() +
               ")"
             : ""
-        }`
+        }`,
       );
       account.balance = balance;
       account.tokenBalance = tb;

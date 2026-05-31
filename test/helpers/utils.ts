@@ -32,7 +32,8 @@ export function processArguments(): {
     chainName !== "mina:local" &&
     chainName !== "mina:devnet" &&
     chainName !== "mina:lightnet" &&
-    chainName !== "zeko:testnet"
+    chainName !== "zeko:testnet" &&
+    chainName !== "mina:testnet"
   )
     throw new Error("Invalid chain name");
 
