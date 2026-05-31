@@ -5,7 +5,7 @@
 ### Local network
 
 ```sh
-yarn local:all
+npm run local:all
 ```
 
 The test will take approximately 2 hours to complete on Mac M2 Max
@@ -14,7 +14,7 @@ The test will take approximately 2 hours to complete on Mac M2 Max
 
 ```sh
 zk lightnet start
-yarn lightnet:all
+npm run lightnet:all
 ```
 
 The test will take approximately 7 hours to complete on Mac M2 Max
@@ -22,13 +22,13 @@ The test will take approximately 7 hours to complete on Mac M2 Max
 ### Devnet network
 
 ```sh
-yarn devnet:all
+npm run devnet:all
 ```
 
 The test will take approximately one day to complete on Mac M2 Max. In case of the devnet node instability, some tests can fail and can be rerun by
-`yarn devnet:auction:rerun`, setting the `RERUN` environment variable to the number of the test to rerun (1-16)
-`yarn devnet:contract:matrix`
-`yarn devnet:zkprogram:matrix`
+`npm run devnet:auction:rerun`, setting the `RERUN` environment variable to the number of the test to rerun (1-16)
+`npm run devnet:contract:matrix`
+`npm run devnet:zkprogram:matrix`
 
 ## Environment
 

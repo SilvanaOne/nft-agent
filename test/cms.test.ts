@@ -61,6 +61,17 @@ const { TestPublicKey } = Mina;
 type TestPublicKey = Mina.TestPublicKey;
 const collectionKey = TestPublicKey.random();
 const nftKey = TestPublicKey.random();
+// Log full keypairs (public + private) for every generated contract address so
+// the deployed contracts can be upgraded later — the private key is required to
+// authorize a future upgrade and is otherwise unrecoverable.
+console.log("collection contract:", {
+  publicKey: collectionKey.toBase58(),
+  privateKey: collectionKey.key.toBase58(),
+});
+console.log("nft contract:", {
+  publicKey: nftKey.toBase58(),
+  privateKey: nftKey.key.toBase58(),
+});
 const tokenId = TokenId.derive(collectionKey);
 const keys = TEST_ACCOUNTS.map((account) =>
   TestPublicKey.fromBase58(account.privateKey)

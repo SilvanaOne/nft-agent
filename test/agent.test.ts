@@ -202,9 +202,18 @@ describe("NFT Agent", async () => {
       await sendTx({ tx: topupTx, description: "topup user2" });
     }
 
-    console.log("collection:", collectionKey.toBase58());
-    console.log("admin:", adminKey.toBase58());
-    console.log("creator:", admin.toBase58());
+    console.log("creator (deployer):", admin.toBase58());
+    // Log full keypairs (public + private) for every generated contract address so
+    // the deployed contracts can be upgraded later — the private key is required to
+    // authorize a future upgrade and is otherwise unrecoverable.
+    console.log("collection contract:", {
+      publicKey: collectionKey.toBase58(),
+      privateKey: collectionKey.key.toBase58(),
+    });
+    console.log("admin contract:", {
+      publicKey: adminKey.toBase58(),
+      privateKey: adminKey.key.toBase58(),
+    });
     await printBalances();
   });
 
@@ -326,7 +335,11 @@ describe("NFT Agent", async () => {
         nftAddresses.push(nftKey);
         nftOwners.push(owner);
 
-        console.log("nft:", nftKey.toBase58());
+        // Log the generated NFT contract keypair (public + private) so it can be upgraded later.
+        console.log("nft:", {
+          publicKey: nftKey.toBase58(),
+          privateKey: nftKey.key.toBase58(),
+        });
         console.log("owner:", owner.toBase58());
         const nftData: NftData = {
           owner: owner.toBase58(),
@@ -512,7 +525,11 @@ describe("NFT Agent", async () => {
         const offerAddress = TestPublicKey.random();
         offerAddresses.push(offerAddress);
         console.log("nft:", nftAddress.toBase58());
-        console.log("offer:", offerAddress.toBase58());
+        // Log the generated offer contract keypair (public + private) so it can be upgraded later.
+        console.log("offer:", {
+          publicKey: offerAddress.toBase58(),
+          privateKey: offerAddress.key.toBase58(),
+        });
         const nonce = Number(Mina.getAccount(owner).nonce.toBigint());
         const { tx, request, storage, metadataRoot } =
           await buildNftTransaction({
