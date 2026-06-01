@@ -1,6 +1,6 @@
 {
   "name": "nft-agent",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "author": "DFST",
   "type": "module",
   "license": "Apache-2.0",
@@ -10,7 +10,7 @@
     "local:cms": "CHAIN=local CLOUD=local DEPLOY=true MINT=true TRANSFER=true SELL=true BUY=true npm run test test/cms.test.ts",
     "devnet:agent": "CHAIN=mina:devnet DEPLOY=true MINT=true TRANSFER=true SELL=true BUY=true npm run test test/agent.test.ts",
     "mesa:agent": "CHAIN=mina:testnet CLOUD=local DEPLOY=true MINT=true TRANSFER=true SELL=true BUY=true npm run test test/agent.test.ts",
-    "mesa:agent:restart": "CHAIN=mina:testnet CLOUD=local DEPLOY=false MINT=true TRANSFER=true SELL=true BUY=true KEYS=data/B62qr9X2XitdSM2Mijzv4nAmQmKLMDQK89LJCKgy9Q8LDUJgB3N7bKi.json npm run test test/agent.test.ts",
+    "mesa:agent:restart": "CHAIN=mina:testnet CLOUD=local DEPLOY=false MINT=true TRANSFER=true SELL=true BUY=true KEYS=data/B62qkuW6A5CgXHBvLvXHgTFoviA3qAJ8j2Bofa68Reey13YGhJaSpU1.json npm run test test/agent.test.ts",
     "zeko:agent": "CHAIN=zeko CLOUD=local DEPLOY=true MINT=true TRANSFER=true SELL=true BUY=true npm run test test/agent.test.ts",
     "coverage": "rm -rf coverage && c8 npm run local:agent",
     "update": "ncu -i -u --root -ws"
