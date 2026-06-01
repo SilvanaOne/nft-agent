@@ -1,4 +1,3 @@
-import { pinToInfura, isPinnedToInfura } from "./infura.js";
 import { pinToPinata, fetchPin } from "./pinata.js";
 
 export async function pinIfNeeded(params: {
@@ -27,15 +26,6 @@ export async function pinIfNeeded(params: {
       pinned = true;
     }
 
-    const isPinnedToInfuraResult = await isPinnedToInfura(hash);
-    if (isPinnedToInfuraResult) {
-      //console.log("Already pinned to Infura", hash);
-    } else {
-      //console.log("Pinning to Infura", hash);
-      const result = await pinToInfura(hash);
-      console.log("Infura pin result:", { hash, result });
-      pinned = true;
-    }
     return pinned;
   } catch (error) {
     console.error("pinIfNeeded error", { hash, error });
