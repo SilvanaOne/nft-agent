@@ -1,5 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
+import { writeFileSync, readFileSync, mkdirSync, existsSync } from "node:fs";
 import {
   Mina,
   AccountUpdate,
@@ -8,6 +9,7 @@ import {
   setNumberOfWorkers,
   TokenId,
 } from "o1js";
+import { NFTStateStruct, NFTData } from "@silvana-one/nft";
 import { NftAPI } from "@silvana-one/mina-prover";
 import {
   sleep,
@@ -72,6 +74,7 @@ const {
   sell,
   buy,
   useAdvancedAdmin,
+  keysFile,
 } = args;
 
 if (
@@ -99,8 +102,44 @@ let accounts: {
   tokenBalance?: number;
 }[] = [];
 
-let collectionKey = TestPublicKey.random();
-let adminKey = TestPublicKey.random();
+let collectionKey: TestPublicKey;
+let adminKey: TestPublicKey;
+let pingPongNftKey: TestPublicKey;
+if (keysFile) {
+  // Restart mode: reuse an already-deployed collection + admin + persistent ping-pong NFT.
+  if (!existsSync(keysFile))
+    throw new Error(
+      `KEYS file not found: ${keysFile}. Run \`npm run mesa:agent\` first and point KEYS at the generated ./data/<collectionPublicKey>.json.`,
+    );
+  let saved: {
+    collectionContract?: { privateKey?: string };
+    adminContract?: { privateKey?: string };
+    pingPongNft?: { privateKey?: string };
+  };
+  try {
+    saved = JSON.parse(readFileSync(keysFile, "utf8"));
+  } catch (e) {
+    throw new Error(
+      `KEYS file is not valid JSON: ${keysFile}: ${(e as Error).message}`,
+    );
+  }
+  if (
+    !saved.collectionContract?.privateKey ||
+    !saved.adminContract?.privateKey ||
+    !saved.pingPongNft?.privateKey
+  )
+    throw new Error(
+      `KEYS file ${keysFile} must contain collectionContract.privateKey, adminContract.privateKey and pingPongNft.privateKey`,
+    );
+  collectionKey = TestPublicKey.fromBase58(saved.collectionContract.privateKey);
+  adminKey = TestPublicKey.fromBase58(saved.adminContract.privateKey);
+  pingPongNftKey = TestPublicKey.fromBase58(saved.pingPongNft.privateKey);
+  console.log("restart mode: reusing collection from", keysFile);
+} else {
+  collectionKey = TestPublicKey.random();
+  adminKey = TestPublicKey.random();
+  pingPongNftKey = TestPublicKey.random();
+}
 const tokenId = TokenId.derive(collectionKey);
 
 describe("NFT Agent", async () => {
@@ -215,10 +254,41 @@ describe("NFT Agent", async () => {
       publicKey: adminKey.toBase58(),
       privateKey: adminKey.key.toBase58(),
     });
+
+    // On the canonical (non-restart) run, persist all keypairs to
+    // ./data/<collectionPublicKey>.json so the collection can be reused later via
+    // the KEYS env var (restart mode): mint new NFTs for it (skip deploy) and
+    // ping-pong the persistent NFT between buyer and bidder.
+    // Skipped on local/lightnet, where keys are ephemeral and not reusable.
+    if (!keysFile && chain !== "mina:local" && chain !== "mina:lightnet") {
+      if (!existsSync("./data")) mkdirSync("./data", { recursive: true });
+      const kp = (k: TestPublicKey) => ({
+        publicKey: k.toBase58(),
+        privateKey: k.key.toBase58(),
+      });
+      const keysData = {
+        collectionContract: kp(collectionKey),
+        adminContract: kp(adminKey),
+        pingPongNft: kp(pingPongNftKey),
+        pingPongParties: { partyA: buyer.toBase58(), partyB: bidder.toBase58() },
+        deployer: kp(admin),
+        user1: kp(user1),
+        user2: kp(user2),
+        user3: kp(user3),
+        user4: kp(user4),
+        topup: kp(topup),
+        bidder: kp(bidder),
+        buyer: kp(buyer),
+        wallet: { publicKey: wallet.toBase58() },
+      };
+      const file = `./data/${collectionKey.toBase58()}.json`;
+      writeFileSync(file, JSON.stringify(keysData, null, 2));
+      console.log("saved keys to", file);
+    }
     await printBalances();
   });
 
-  if (deploy) {
+  if (deploy && !keysFile) {
     it(`should deploy contract`, async () => {
       console.log("deploying contract");
       console.time("deployed");
@@ -402,6 +472,74 @@ describe("NFT Agent", async () => {
         const hash = proofs.results[0].hash;
         assert(hash !== undefined, "Mint hash is undefined");
         console.log("mint hash:", hash);
+        hashArray.push(hash);
+      }
+
+      // First run only: mint the persistent ping-pong NFT, owned by `buyer` (partyA).
+      // On restart this NFT already exists and is moved by the ping-pong step instead.
+      if (!keysFile) {
+        const nftName = randomName();
+        const nftData: NftData = { owner: buyer.toBase58() };
+        const mintParams: NftMintParams = {
+          name: nftName,
+          address: pingPongNftKey.toBase58(),
+          data: nftData,
+          metadata: {
+            name: nftName,
+            image: randomImage(),
+            description: randomText(),
+          },
+        };
+        console.log("ping-pong nft (minted to buyer):", {
+          publicKey: pingPongNftKey.toBase58(),
+          privateKey: pingPongNftKey.key.toBase58(),
+          owner: buyer.toBase58(),
+        });
+        const { tx, request, storage, metadataRoot } =
+          await buildNftMintTransaction({
+            chain,
+            args: {
+              txType: "nft:mint",
+              sender: admin.toBase58(),
+              nonce: nonce++,
+              memo: `mint ping-pong NFT ${nftName}`,
+              collectionAddress: collectionKey.toBase58(),
+              nftMintParams: mintParams,
+            },
+            provingKey: process.env.WALLET!,
+            provingFee: LAUNCH_FEE,
+          });
+
+        tx.sign([admin.key, pingPongNftKey.key]);
+
+        const payloads = createTransactionPayloads(tx);
+
+        const jobId = await api.proveTransaction({
+          request: {
+            ...(request as NftMintTransactionParams),
+            txType: "nft:mint",
+            nftMintParams: {
+              ...mintParams,
+              storage,
+              metadata: metadataRoot,
+            },
+          },
+          ...payloads,
+          symbol,
+        } as NftTransaction);
+        console.log("ping-pong mint jobId:", jobId);
+        assert(jobId !== undefined, "Ping-pong mint jobId is undefined");
+        await api.waitForJobResults({ jobId, printLogs: true });
+        const proofs = await api.getResults(jobId);
+        if (
+          !("results" in proofs) ||
+          !proofs.results ||
+          proofs.results.length === 0
+        )
+          throw new Error("Results not found");
+        const hash = proofs.results[0].hash;
+        assert(hash !== undefined, "Ping-pong mint hash is undefined");
+        console.log("ping-pong mint hash:", hash);
         hashArray.push(hash);
       }
 
@@ -671,6 +809,97 @@ describe("NFT Agent", async () => {
       }
       Memory.info("bought");
       console.timeEnd("bought");
+      if (chain !== "mina:local") await sleep(DELAY);
+      await printBalances();
+    });
+  }
+
+  if (keysFile) {
+    it(`should ping-pong NFT by current owner`, async () => {
+      console.time("ping-ponged");
+      // Read the persistent NFT's current on-chain owner and transfer it to the
+      // other of the two ping-pong parties (buyer <-> bidder). Each run flips it,
+      // so seller/buyer are derived from who currently owns the NFT.
+      await fetchMinaAccount({ publicKey: pingPongNftKey, tokenId, force: true });
+      const acc = Mina.getAccount(pingPongNftKey, tokenId);
+      const owner = NFTData.unpack(
+        NFTStateStruct.fromAccount(acc).packedData,
+      ).owner;
+      const ownerB58 = owner.toBase58();
+      let from: TestPublicKey;
+      let to: TestPublicKey;
+      if (ownerB58 === buyer.toBase58()) {
+        from = buyer;
+        to = bidder;
+      } else if (ownerB58 === bidder.toBase58()) {
+        from = bidder;
+        to = buyer;
+      } else {
+        throw new Error(
+          `ping-pong NFT ${pingPongNftKey.toBase58()} owned by unexpected account ${ownerB58}`,
+        );
+      }
+      console.log("ping-pong:", {
+        nft: pingPongNftKey.toBase58(),
+        from: from.toBase58(),
+        to: to.toBase58(),
+      });
+      await fetchMinaAccount({ publicKey: from, force: true });
+      const nonce = Number(Mina.getAccount(from).nonce.toBigint());
+      const { tx, request } = await buildNftTransaction({
+        chain,
+        args: {
+          txType: "nft:transfer",
+          nftAddress: pingPongNftKey.toBase58(),
+          sender: from.toBase58(),
+          nonce,
+          memo: "ping-pong NFT",
+          collectionAddress: collectionKey.toBase58(),
+          nftTransferParams: {
+            from: from.toBase58(),
+            to: to.toBase58(),
+          },
+        },
+        provingKey: process.env.WALLET!,
+        provingFee: TRANSACTION_FEE,
+      });
+
+      tx.sign([from.key]);
+
+      const payloads = createTransactionPayloads(tx);
+
+      const jobId = await api.proveTransaction({
+        request: {
+          ...(request as NftTransferTransactionParams),
+          txType: "nft:transfer",
+          nftTransferParams: {
+            from: from.toBase58(),
+            to: to.toBase58(),
+          },
+        },
+        ...payloads,
+        symbol,
+      } as NftTransaction);
+      console.log("ping-pong jobId:", jobId);
+      assert(jobId !== undefined, "Ping-pong jobId is undefined");
+      await api.waitForJobResults({ jobId, printLogs: true });
+      const proofs = await api.getResults(jobId);
+      if (
+        !("results" in proofs) ||
+        !proofs.results ||
+        proofs.results.length === 0
+      )
+        throw new Error("Results not found");
+      const hash = proofs.results[0].hash;
+      assert(hash !== undefined, "Ping-pong hash is undefined");
+      console.log("ping-pong hash:", hash);
+      console.log("Waiting for ping-pong tx to be included...", hash);
+      while (!(await getTxStatusFast({ hash })).result === true) {
+        await sleep(10000);
+      }
+      console.log("ping-pong tx included", hash);
+      Memory.info("ping-ponged");
+      console.timeEnd("ping-ponged");
       if (chain !== "mina:local") await sleep(DELAY);
       await printBalances();
     });

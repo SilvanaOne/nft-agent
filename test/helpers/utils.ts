@@ -14,6 +14,7 @@ export function processArguments(): {
   transfer: boolean;
   sell: boolean;
   buy: boolean;
+  keysFile: string | undefined;
 } {
   const chainName = process.env.CHAIN ?? "mina:local";
   const useAdvancedAdmin = process.env.ADVANCED ?? "false";
@@ -51,5 +52,6 @@ export function processArguments(): {
     transfer,
     sell,
     buy,
+    keysFile: process.env.KEYS,
   };
 }
